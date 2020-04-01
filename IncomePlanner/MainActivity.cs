@@ -9,11 +9,54 @@ namespace IncomePlanner
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        EditText incomePerHourEditText;
+        EditText workHoursEditText;
+        EditText taxRateEditText;
+        EditText savingsRateEditText;
+
+        TextView workSummaryValue;
+        TextView grossIncomeValue;
+        TextView taxPayableValue;
+        TextView savingsValue;
+        TextView spendableIncomeValue;
+
+        Button calculateButton;
+        RelativeLayout resultLayout;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);           
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            ConnectViews();
+            calculateButton.Click += CalculateButton_Click;
+        }
+
+        private void CalculateButton_Click(object sender, System.EventArgs e)
+        {
+            //Take inputs from user
+            double incomePerHour = double.Parse(incomePerHourEditText.Text);
+            double workHoursPerDay = double.Parse(workHoursEditText.Text);
+            double taxRate = double.Parse(taxRateEditText.Text);
+            double savingsRate = double.Parse(savingsRateEditText.Text);
+        }
+
+        private void ConnectViews()
+        {
+            incomePerHourEditText = FindViewById<EditText>(Resource.Id.incomePerHourEditText);
+            workHoursEditText = FindViewById<EditText>(Resource.Id.workHoursEditText);
+            taxRateEditText = FindViewById<EditText>(Resource.Id.taxRateEditText);
+            savingsRateEditText = FindViewById<EditText>(Resource.Id.savingsRateEditText);
+
+            workSummaryValue = FindViewById<TextView>(Resource.Id.workSummaryValue);
+            grossIncomeValue = FindViewById<TextView>(Resource.Id.grossIncomeValue);
+            taxPayableValue = FindViewById<TextView>(Resource.Id.taxPayableValue);
+            savingsValue = FindViewById<TextView>(Resource.Id.savingsValue);
+            spendableIncomeValue = FindViewById<TextView>(Resource.Id.spendableIncomeValue);
+
+            calculateButton = FindViewById<Button>(Resource.Id.calculateButton);
+            resultLayout = FindViewById<RelativeLayout>(Resource.Id.resultLayout);
+
         }
         
     }
