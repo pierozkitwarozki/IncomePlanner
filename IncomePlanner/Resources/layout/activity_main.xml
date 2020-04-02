@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -64,7 +64,7 @@
                     android:id="@+id/taxRateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tax Rate ($)"
+                    android:hint="Tax Rate (%)"
                     android:inputType="number"
                     android:imeOptions="actionNext"
                     android:layout_marginLeft="20dp"
@@ -93,7 +93,8 @@
                 android:layout_marginTop="30dp"
                 android:text="calculate"
             />
-            <RelativeLayout
+            <RelativeLayout 
+                android:visibility="invisible"
                 android:id="@+id/resultLayout"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
